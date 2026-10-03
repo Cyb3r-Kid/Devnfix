@@ -1,10 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
+
+const subscribe = () => () => {};
 
 export function Reveal({ children, className = "", delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  const reduce = useReducedMotion();
+  const prefersReduced = useReducedMotion();
+  const hydrated = useSyncExternalStore(subscribe, () => true, () => false);
+  const reduce = hydrated && Boolean(prefersReduced);
   return (
     <motion.div
       initial={reduce ? false : { opacity: 0, y: 22 }}

@@ -1,6 +1,8 @@
 import { About } from "@/components/About";
-import { CTA } from "@/components/CTA";
+import { BentoCapabilities } from "@/components/BentoCapabilities";
+import { Capabilities } from "@/components/Capabilities";
 import { Contact } from "@/components/Contact";
+import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Industries } from "@/components/Industries";
@@ -25,5 +27,28 @@ export default function Home() {
     ...(siteConfig.email ? { email: siteConfig.email } : {}),
     sameAs: Object.values(siteConfig.socialLinks).filter(Boolean),
   };
-  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}/><Navbar/><main><Hero/><ValueStrip/><Services/><WhyDevnfix/><QlessSection/><Process/><Industries/><Portfolio/><About/><CTA/><Contact/></main><Footer/><WhatsAppButton/></>;
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}/>
+      <Navbar/>
+      <main>
+        <Hero/>
+        <ValueStrip/>
+        <Services/>
+        <Portfolio/>
+        <BentoCapabilities/>
+        <WhyDevnfix/>
+        <QlessSection/>
+        <Process/>
+        <Industries/>
+        <About/>
+        <Capabilities/>
+        <CTA/>
+        <Contact/>
+      </main>
+      <Footer/>
+      <WhatsAppButton/>
+    </>
+  );
 }

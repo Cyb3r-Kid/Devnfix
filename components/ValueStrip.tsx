@@ -1,7 +1,11 @@
-import { AppWindow, Boxes, Megaphone, Palette, PlaySquare } from "lucide-react";
-import { Container } from "@/components/ui/Container";
+import { Asterisk } from "lucide-react";
 
-const items = [["Web Development", AppWindow], ["Branding", Palette], ["Social Media", Megaphone], ["Content", PlaySquare], ["SaaS Solutions", Boxes]] as const;
+const skills = ["Web Development", "Branding", "Digital Marketing", "AI Content", "UI/UX", "Social Media", "Automation"];
+
+function SkillGroup({ hidden = false }: { hidden?: boolean }) {
+  return <div className="flex shrink-0 items-center" aria-hidden={hidden}>{skills.map((skill) => <div key={skill} className="flex items-center gap-6 px-5 sm:px-8"><span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[.17em] text-deep/70 sm:text-sm">{skill}</span><Asterisk size={15} className="text-brand/50"/></div>)}</div>;
+}
+
 export function ValueStrip() {
-  return <section aria-label="Capabilities" className="border-y border-line bg-cloud"><Container className="py-8"><p className="mb-6 text-center text-sm font-bold text-deep">Everything your business needs to grow digitally.</p><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">{items.map(([name, Icon], i) => <div key={name} className={`flex min-h-11 items-center justify-center gap-2 text-center text-xs font-semibold text-muted sm:text-sm ${i === 4 ? "col-span-2 sm:col-span-1" : ""}`}><Icon size={17} className="text-teal" />{name}</div>)}</div></Container></section>;
+  return <section aria-label="Devnfix capabilities" className="overflow-hidden border-y border-line bg-cloud py-6"><div className="marquee-track flex"><SkillGroup/><SkillGroup hidden/></div></section>;
 }

@@ -1,15 +1,17 @@
+import { Blocks, MessagesSquare, PanelsTopLeft, Scale, Sparkles, Workflow } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-const advantages = [
-  ["01", "Business-First Approach", "We start with the business problem before choosing the technology."],
-  ["02", "Complete Digital Team", "Development, design, content and digital strategy under one roof."],
-  ["03", "Built to Scale", "Solutions designed to evolve as your business grows."],
-  ["04", "Long-Term Partnership", "We focus on ongoing value rather than simply delivering a project and disappearing."],
+const reasons = [
+  ["Business-first", "We start with the business challenge, not a fashionable tool.", Scale],
+  ["Modern technology", "Reliable foundations selected for performance and maintainability.", Blocks],
+  ["Creative clarity", "Design that feels distinctive without sacrificing usability.", Sparkles],
+  ["Clear communication", "Direct, useful conversations throughout the project.", MessagesSquare],
+  ["Scalable thinking", "Systems designed to evolve as your digital needs grow.", Workflow],
+  ["End-to-end delivery", "Strategy, design, content and development connected in one team.", PanelsTopLeft],
 ] as const;
-const flow = ["Business goal", "Strategy", "Design", "Build", "Launch", "Grow"];
 
 export function WhyDevnfix() {
-  return <section className="section-pad overflow-hidden bg-cloud"><Container className="grid items-center gap-16 lg:grid-cols-[1.05fr_.95fr]"><div><Reveal><SectionHeading eyebrow="Why Devnfix" title="More Than a Service Provider." text="We combine design, development, content and technology so businesses don't need to coordinate multiple teams." /></Reveal><div className="mt-10 grid gap-7 sm:grid-cols-2">{advantages.map(([n, title, text], i) => <Reveal key={n} delay={(i % 2) * .08}><div className="border-l-2 border-teal pl-5"><span className="text-xs font-extrabold tracking-[.15em] text-brand">{n}</span><h3 className="mt-2 font-extrabold text-deep">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{text}</p></div></Reveal>)}</div></div><Reveal><div className="relative mx-auto max-w-[440px] rounded-[32px] bg-deep p-6 shadow-[0_28px_70px_rgba(3,31,75,.18)] sm:p-8"><div className="absolute -right-20 -top-20 size-48 rounded-full bg-teal/20 blur-3xl" /><p className="relative mb-7 text-xs font-bold uppercase tracking-[.2em] text-white/55">How we create momentum</p><div className="relative space-y-2">{flow.map((item, i) => <div key={item} className="relative flex items-center gap-4"><span className={`grid size-10 shrink-0 place-items-center rounded-full text-xs font-extrabold ${i === flow.length - 1 ? "bg-teal text-deep" : "border border-white/15 bg-white/5 text-white"}`}>{String(i + 1).padStart(2, "0")}</span><div className={`flex min-h-14 flex-1 items-center rounded-2xl border px-5 text-sm font-bold uppercase tracking-[.13em] ${i === flow.length - 1 ? "border-teal/40 bg-teal/10 text-teal" : "border-white/10 bg-white/[.04] text-white"}`}>{item}</div>{i < flow.length - 1 && <span className="absolute left-[19px] top-12 h-6 w-px bg-gradient-to-b from-brand to-teal" />}</div>)}</div></div></Reveal></Container></section>;
+  return <section className="section-pad relative overflow-hidden bg-white"><div className="pointer-events-none absolute -left-44 top-24 size-96 rounded-full bg-skywash blur-3xl"/><Container className="relative grid gap-14 lg:grid-cols-[.78fr_1.22fr] lg:items-start"><Reveal><div className="lg:sticky lg:top-32"><SectionHeading eyebrow="Why Devnfix" title="Good Digital Work Starts With Better Thinking." text="We bring the commercial, creative and technical decisions into one focused process."/><div className="mt-8 rounded-[24px] border border-brand/10 bg-gradient-to-br from-cloud to-skywash p-6"><p className="text-xs font-extrabold uppercase tracking-[.16em] text-brand">The Devnfix difference</p><p className="mt-3 text-lg font-extrabold leading-7 text-deep">A connected team that sees the whole digital experience—not isolated deliverables.</p></div></div></Reveal><div className="grid gap-4 sm:grid-cols-2">{reasons.map(([title, text, Icon], index) => <Reveal key={title} delay={(index % 2) * .06}><article className="group h-full rounded-[26px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-brand/25 hover:shadow-[0_18px_50px_rgba(6,27,59,.07)]"><span className="grid size-11 place-items-center rounded-2xl bg-cloud text-brand transition group-hover:bg-brand group-hover:text-white"><Icon size={20}/></span><h3 className="mt-7 text-lg font-extrabold text-deep">{title}</h3><p className="mt-2 text-sm leading-6 text-muted">{text}</p></article></Reveal>)}</div></Container></section>;
 }

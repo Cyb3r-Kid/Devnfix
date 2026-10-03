@@ -1,0 +1,7 @@
+import { BriefcaseBusiness, Building, GraduationCap, HeartPulse, Rocket, Scissors, ShoppingBag, Utensils } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+
+const industries = [["Restaurants & Cafes", Utensils], ["Clinics", HeartPulse], ["Salons & Spas", Scissors], ["Retail Stores", ShoppingBag], ["Startups", Rocket], ["Educational Institutions", GraduationCap], ["Professional Services", BriefcaseBusiness], ["Local Businesses", Building]] as const;
+export function Industries() { return <section className="section-pad bg-cloud"><Container><Reveal><SectionHeading eyebrow="Who we help" title="Built for Growing Businesses" text="Flexible digital solutions shaped around the realities of modern, ambitious organisations." /></Reveal><div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">{industries.map(([name, Icon], i) => <Reveal key={name} delay={(i % 4) * .04}><div className="group h-full rounded-2xl border border-line bg-white p-5 transition hover:-translate-y-1 hover:border-teal/35"><span className="grid size-10 place-items-center rounded-xl bg-skywash text-brand transition group-hover:bg-teal group-hover:text-white"><Icon size={19} /></span><p className="mt-7 text-[10px] font-bold uppercase tracking-[.14em] text-muted">Solutions for</p><h3 className="mt-1 text-sm font-extrabold leading-5 text-deep sm:text-base">{name}</h3></div></Reveal>)}</div></Container></section>; }
